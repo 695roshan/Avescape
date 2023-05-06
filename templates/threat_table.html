@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avescape-Threats</title>
+</head>
+<body>
+    <table border="1px solid" style="height:100vh;width:100vw">
+        <tr>
+            <th>BIRD NAME</th>
+            <th>SCIENTIFIC NAME</th>
+            <th>DISTRIBUTION</th>
+            <th>MAJOR THREATS</th>
+            <th>CATEGORY</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{result[0]}}</td>
+            <td>{{result[1]}}</td>
+            <td>{{result[2]}}</td>
+            <td>{{result[3]}}</td>
+            <td>{{result[4]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

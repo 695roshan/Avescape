@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Avescape</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <section class={% block header_class %}{% endblock %}>
+    
+    <nav>
+        <a href="/"><img src="../static/images/logo/4.png" class="logo"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hidemenu()"></i>
+    
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/classify">CLASSIFICATION</a></li>
+                <li><a href="/threats">EXPLORE THREATS</a></li>
+                <li><a href="/blogs">BLOGS</a></li>
+                <li></li>   
+            </ul>
+            
+        </div>
+        <a style="text-decoration: none" href="/contact"><button class="btn">CONTACT US</button></a>
+        <i class="fa fa-bars" onclick="showmenu()"></i>
+    
+    </nav>
+    {% block header %}{% endblock %}
+    </section>
+    {% block body %}{% endblock %}
+    <!---footer--->
+<section class="footer">
+    <h4>A Birder's Directory</h4>
+    <h5>&#169; 2023 Copyright : Avescape</h5>
+    <p>Happiness correlates with one's proximity to birds. From identification to information,we have it all. 
+        Come join us as we move <br>one step closer to these creatures and journey towards <span>Nirvana!</p>
+<div class="icons">
+    <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><i class="fa fa-twitter"></i></a>
+    <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/home"><i class="fa fa-linkedin"></i></a>
+</div>
+<p>Made with  <i class="fa fa-heart-o"></i> by Aniket,Roshan & Asmita</p>
+        </section>
+        {% block script %}{% endblock %}
+    <script>
+        var navLinks=document.getElementById("navLinks");
+        function showmenu()
+        {
+            navLinks.style.right="0";
+        }
+        function hidemenu()
+        {
+            navLinks.style.right="-200px";
+        }
+    </script>
+    
+</body>
+
+</html>

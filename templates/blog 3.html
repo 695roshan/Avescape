@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Blog 3{% endblock %}
+{% block css %} <link rel="stylesheet" href="../static/css/style1.css">{% endblock %}
+{% block header_class %}sub-header{% endblock %}
+   {% block header %}
+   
+    <h1>Blog - 3</h1> 
+    {% endblock %}
+    {% block body %}
+    <div class="container">
+        <div class="hero2"></div>
+        <main>
+            <h2>Birding: The Five S's</h2>
+            <div class="profile-container">
+                <div class="profile">
+                    <div class="text">
+                        <h3>Asmita Mondal</h3>
+                        <p>March 17, 2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                   <center><img src="../static/images/pictures/5s.jpg" class="pic2"> </center>
+                   <center><img src="../static/images/pictures/5s-1.jpg" class="pic21"> </center>
+                </div>
+                <div class="tags">
+                    <p>tags:</p>
+                    <a href="#">Birding Ethics</a>
+                    <a href="#">Birding rules</a>
+                    <a href="#">Birding</a>
+                    <a href="#">Bird-watching</a>
+                </div>
+        </main>
+    </div>
+ {% endblock %}

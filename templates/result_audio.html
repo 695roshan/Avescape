@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Result{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="../static/css/style2.css">{% endblock %}
+{% block header_class %}sub-header2{% endblock %}
+{% block header %}
+
+<h1>Results</h1>
+{% endblock %}
+{% block body %}
+<div class="res">
+    <div class="res1">
+        <h2>Name: {{act_name}}</h2>
+        <h3>Accuracy of Prediction: {{acc}}</h3>
+        <br><br><br>
+    </div>
+
+</div>
+</section>
+{% endblock %}

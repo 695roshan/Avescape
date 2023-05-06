@@ -1,0 +1,65 @@
+   {% extends "base.html" %}
+   {% block title %}Classification{% endblock %}
+   {% block header_class %}sub-header{% endblock %}
+   {% block header %}
+    <h1>Classification</h1>
+    {% endblock %}
+{% block body %}
+    <div class="form-container ">
+        <div class="toggle">
+            <button class="image-toggle active" id="image-toggle">Image Classification</button>
+            <button class="audio-toggle" id="audio-toggle">Audio Classification</button>
+          </div>
+        <form id="image-form" class="form" action="/result-image" method="POST" enctype="multipart/form-data">
+          <h2>Identify an Image</h2>
+          <input name="bird" type="file" accept="image/*" onchange="loadFile(event)">
+          <img id="output" src="" class="i1">
+          <button type="submit">Upload</button>
+        </form>
+        
+        <form id="audio-form" class="form" action="/result-audio" method="POST" enctype="multipart/form-data">
+            
+          <h2>Identify a Bird Call</h2>
+          <input type="file" placeholder="Birdcall" name="file" required>
+          <button type="submit">Upload</button>
+        </form>
+        
+      </div>
+      {% endblock %}
+      {% block script %}   
+        <script>
+          window.onload=()=>{
+        const imageForm = document.getElementById('image-form');
+        const audioForm = document.getElementById('audio-form');
+        const imageToggle = document.getElementById('image-toggle');
+        const audioToggle = document.getElementById('audio-toggle');
+        
+        
+        // Show image form by default and hide audio form
+        audioForm.classList.add('hidden');
+        imageToggle.classList.add('active');
+        
+        
+        audioToggle.addEventListener('click', (e) => {
+            console.log("hii audio")
+          imageForm.classList.add('hidden');
+          audioForm.classList.remove('hidden');
+          imageToggle.classList.remove('active');
+          audioToggle.classList.add('active');
+        });
+        
+        imageToggle.addEventListener('click', (e) => {
+            console.log("hii image")
+          audioForm.classList.add('hidden');
+          imageForm.classList.remove('hidden');
+          audioToggle.classList.remove('active');
+          imageToggle.classList.add('active');
+        });
+        }
+        var loadFile = function(event) {
+	      var image = document.getElementById('output');
+	      image.src = URL.createObjectURL(event.target.files[0]);
+        image.style.display="flex";
+        };
+        </script>
+        {% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block header_class %}sub-header{% endblock %}
+   {% block header %}
+    <h1>About Us</h1>
+    {% endblock %}
+{% block body %}
+<section class="content">
+    <center><p>Birdwatching today is more than just a recreational activity.<br>
+    Since time immemorial, it has been a common hobby such that the newfound empathy for such creatures<br> 
+    has helped drum out dispassionate killing. However, identifying their species often requires meticulous<br> 
+    searching through encyclopaedias, research papers and books.<br>
+    <br>
+    This website brings together bird lovers from all over<br>
+    the world under a roof to provide features like identification through images and audio, along with <br>
+    other information like exploring threat levels and even reading interesting blogs. In this project, we have developed <br>
+    a Deep Learning model to help birders recognize 500 bird species from images of birds to provide birdwatchers <br>
+    with a convenient tool for identifying the birds in their natural habitat. We have also tried to extend the idea <br>
+    by developing a Machine Learning Model to recognize 20 avian species from birdcalls. Through extensive research, their vulnerability <br>
+has also been highlighted. <br>
+<br>Hope you have fun browsing this website as much as we had in creating this for you!</p></center>
+</section>
+
+<section class="creator">
+    <h2>Meet Our Creators</h2>
+    <p>We are a team of three students from St.Xavier's College Autonomous Kolkata pursuing B.Sc in Computer Science. <br>
+        With different fields of expertise, we decided to amalgamate our thoughts into one cohesive forum.
+    </p>
+    <div class="row">
+    <div class="creator-col">
+        <img src="../static/images/logo/anik.jpg">
+        <div class="layer">
+            <h3><b>Aniket Mondal</b><br> Back-end, Model Designing</h3>
+        </div>
+    </div>
+    <div class="creator-col">
+        <img src="../static/images/logo/ash (1).jpg">
+        <div class="layer">
+            <h3><b>Asmita Roy Mondal</b><br> Research, Front-end</h3>
+        </div>
+    </div>
+    <div class="creator-col">
+        <img src="../static/images/logo/Roshan.jpeg">
+        <div class="layer">
+            <h3><b>Roshan Roy</b><br> Lead Model Designing</h3>
+            
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="mentor">
+    <div class="row">
+        <div class="mentor-col">
+            <h2>Our Mentor</h2>
+            <p>We would like to thank our mentor Professor Jayati Ghosh Dastidar
+                for her constant guidance, insights, explanations and support!
+            </p>
+        </div>
+        <div class="mentor-col">
+            <img src="../static/images/pictures/citations.jpeg">
+        </div>
+    </div>
+</section>
+{% endblock %}

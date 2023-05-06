@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block header_class %}header{% endblock %}
+
+{% block header %}
+    
+<div class="text-box">
+    <h1>A Birder's Directory</h1>
+    <p>Welcome to paradise, where visions and<br> predictions
+    merge forces to define the ultimate Avian Atlas!</p>
+    <a href="/about" class="hero-btn">Get To Know Us Better</a>
+</div>
+{% endblock %}
+{% block body %}
+<!---intro-->
+<section class="intro" id="intro">
+    <h1 class="heading">The <span>Avian </span>Kingdom</h1>
+    <div class="row1">
+        <div class="video-container">
+            <video src="../static/images/pictures/birds.mp4" loop autoplay muted></video>
+            <h5>magic with mysticism</h5>
+        </div>
+
+        <div class="content">
+            <h4>The earth has music for those who listen</h4>
+            <p><i>Singing birds so soft and sweet<br>
+                Thru the days and into night<br>
+                Each their love song is a treat<br>
+                With their hope in weightless flight</i></p>
+            <p>Our hearts are filled with exuberance by feathers, flight, melody,<br>
+            beautiful hues, and unique patterns. Happiness correlates with one's proximity to birds.<br>
+            These amazing creatures have caused a stir around the world thanks to their unique mannerisms
+            and significant environmental effect.Join us as we move one step closer<br> to them and journey towards <span>Nirvana! </span></p>
+            
+        </div>
+    </div>
+   
+</section>
+   <!---features-->
+<section class="features">
+    <h2>Our Website In A Nutshell</h2>
+    <p>From identification to information, we have it all!</p>
+<div class="row">
+    <div class="feature-col">
+        <h3>The IUCN List</h3>
+        <p>Get a chance to understand the importance and parameters of the IUCN Red List.
+            Stay updated about the avian species that require urgent attention. </p>
+            <img src="../static/images/logo/8.jpg" alt="Avatar" style="width:200px;border-radius: 50% 50%">
+            <center><a style="text-decoration: none" href="/threats"><button class="btn1">VISIT NOW</button></a></center>
+        </div>
+        <div class="feature-col">
+            <h3>Identification</h3>
+            <p>Employ this easy-to-use tool to identify various species of birds from all across the globe.
+                Our model not only feeds on images but also audios as inputs.</p>
+                <img src="../static/images/logo/10.jpg" alt="Avatar" style="width:200px;border-radius: 50% 50%">
+                <center><a style="text-decoration: none" href="/classify"><button class="btn1">VISIT NOW</button></a></center>
+        </div>
+    <div class="feature-col">
+        <h3>Chronicles</h3>
+        <p>Delve deep into the paradise of birds through documentaries, blogs and researches
+            conducted by ornithologists and fellow bird lovers.</p>
+            <img src="../static/images/logo/12.jpg" alt="Avatar" style="width:200px;border-radius: 50% 50%">
+            <center><a style="text-decoration: none" href="/blogs"><button class="btn1">VISIT NOW</button></a></center>
+        </div>
+</div>
+</section>
+<!----contact--->
+<section class="contact" id="contact">
+    <h1 class="heading1">Get In <span> Touch</span></h1>
+    <div class="row2">
+        <form action="/contact" method="POST">
+            <input type="text" placeholder="Name" class="box" name="fname">
+            <input type="email" placeholder="Email" class="box" name="email">
+            <input type="number" placeholder="Phone" class="box"
+            name="num">
+            <textarea name="" class="box" placeholder="Message" id="" cols="20" rows="5" name="message"></textarea> 
+            <center><input type="submit" value="Submit" class="btn2" onclick="alert('Message submitted successfully')"></center>
+</form>
+<div class="image">
+    <img src="../static/images/logo/55.png" alt="">
+</div>
+    </div>
+</section>
+{% endblock %}

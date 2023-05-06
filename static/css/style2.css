@@ -1,0 +1,53 @@
+/* 
+body{
+        min-height:100vh;
+        background-image: radial-gradient(rgba(9, 99, 39, 0.723),rgba(108, 118, 3, 0.811)), url(../images/pictures/bgg3.jpg);
+        background-size:cover;
+    background-position: center;
+    position: relative;
+    
+  } */
+.sub-header2{
+    height:45vh;
+    width:100%;
+    background-image:linear-gradient(rgba(26, 138, 80, 0.499),rgba(8, 140, 120, 0.405)),url("../images/pictures/bgg3.jpg");
+    background-position:center;
+    background-size:cover;
+    text-align:center;
+    color:#000;
+}
+ 
+    h1{
+        text-align:center; 
+        font-size:62px; 
+        color:darkgreen;  
+    }
+h2{
+    font-size:50px; 
+        color:darkgreen;  
+}
+h3{
+    font-size:30px; 
+        color:darkgreen;  
+}
+ .res{
+   
+    gap:1.5rem;
+    align-items: center;
+    padding:2rem 3rem;
+    text-align: center;
+    }
+.res .res1{
+   
+    padding:2rem 2.5rem;
+    box-shadow:0 .5rem 1.5rem rgba(36, 75, 67, 0.758);
+    border:.1rem solid rgba(0,0,0,.1);
+    border-radius:.5rem;
+    width:95%;
+}
+img{
+float:right;
+    width:30%;
+    height:30%;
+    border:.1rem solid rgba(0,0,0,.1);
+}

@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% block title %}Threats{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<link rel="stylesheet" href="../static/css/style.css">
+{% endblock %}
+{% block header_class %}sub-header1{% endblock %}
+{% block header %}
+<h1>The IUCN List</h1>
+{% endblock %}
+{% block body %}
+<section class="content1">
+    <p><b><span>ABOUT THE IUCN</span></b></p>
+    <p><img src="../static/images/logo/1200px-IUCN_Red_List.svg.png">Since its creation in 1964, The International Union
+        for Conservation of Nature's Red List of Threatened Species<sup>TM</sup> has grown to become the most
+        comprehensive source of data on the status of animal, fungal, and plant species with regard to extinction risk
+        worldwide.
+        The state of the world's biodiversity can be determined in large part by looking at the IUCN Red List. It is an
+        effective instrument to guide conservation policy and action. Information regarding a species' distribution,
+        population size, habitats and ecology, use and threats, commerce, and conservation measures are provided to aid
+        in making conservation decisions.
+        IUCN in general aims to support nations in mainstreaming nature into economic choices, including including the
+        private sector in finding solutions that benefit both people and the environment. </p>
+
+    <p>IUCN keeps track of how climate change is affecting the environment and provides advice on ecosystem conservation
+        and restoration to help with adaptation and mitigation.Countries or organisations create a number of Regional
+        Red Lists that evaluate the risk of extinction for species within a given political control unit. A rigorous set
+        of criteria is used by the IUCN Red List to assess the rate of extinction for thousands of species and
+        subspecies. These standards apply to all species and geographical areas of the planet.
+        Several species considered for the Red List are also essential to maintaining human health and way of life.
+        Emphasizing the plight of such animals and fighting to ensure their survival also contributes to ensuring our
+        own future.</p>
+
+    <p><b><span>OBJECTIVES</span></b></p>
+    <p>Given below are some objectives that the IUCN Red List claims to achieve:</p>
+    <ol>
+        <li>To address the issues of concern and raise awareness about the extinction of species and biodiversity.</li>
+        <li>To offer scientific information on the condition of species and subspecies on a worldwide scale.</li>
+        <li>To design a layout for biodiversity preservation.</li>
+    </ol>
+    <section class="content2">
+        <p><b><span>CATEGORIES OF CLASSIFICATION</span></b></p>
+        <img src="../static/images/pictures/iucn.jpg">
+        <p>The IUCN Red List categorises species based on the following 9 criteria:</p>
+
+        <ol>
+            <li style="color:black;"> <b>Extinct (EX) -</b> There are no longer any known individuals.</style>
+            </li>
+            <li style="color:rgb(81, 2, 63);"><b>Extinct in the Wild (EW) -</b> Only known to persist in zoos or as a
+                naturally occurring population outside of its historical range.</li>
+            <li style="color:red;"><b>Critically Endangered (CR) -</b> Species are in grave danger of going extinct in
+                the wild.</li>
+
+            <li style="color:rgb(255, 145, 0);"><b>Endangered (EN) –</b> Substantial risk of extinction in the wild.
+            </li>
+            <li style="color:rgb(209, 209, 8);"><b>Vulnerable (VU) –</b> Prominent risk of endangerment in the wild.
+            </li>
+            <li style="color:rgb(171, 171, 4);"><b>Near Threatened (NT) -</b> Likely to go extinct soon.</li>
+            <li style="color:rgb(4, 96, 10);"><b>Least Concern (LC) -</b> Doesn't meet the requirements for a more risky
+                category. Pervasive and abundant taxa are represented in this category.</li>
+            <li style="color:rgb(91, 91, 91);"><b>Data Deficient (DD) -</b> Not enough data to determine its risk of
+                extinction.</li>
+            <li><b>Not Evaluated (NE) -</b> Hasn't been assessed in relation to the criteria</li>
+        </ol>
+    </section>
+</section>
+<br>
+<br>
+<br>
+<br>
+<section class="explore">
+    <center>
+        <h2>EXPLORE INDIA TODAY</h2>
+    </center>
+</section>
+
+<br>
+<section class="mySwiper swiper">
+
+    <div class="swiper-wrapper">
+        <div class="card swiper-slide">
+            <div class="card-image">
+                <img src="../static/images/pictures/cr.jpg" alt="">
+            </div>
+            <div class="card-content">
+                <span class="card_title">Critically Endangered</span>
+                <span class="card_name">CR</span>
+                <p class="card_text">Considered to be facing an extremely high risk of extinction in the wild</p>
+                <a href="/threat/ce" style="text-decoration: none" ><button class="card_btn">View More</button></a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+            <div class="card-image">
+                <img src="../static/images/pictures/e.jpg" alt="">
+            </div>
+            <div class="card-content">
+                <span class="card_title">Endangered</span>
+                <span class="card_name">EN</span>
+                <p class="card_text">Considered to be facing a very high risk of extinction in the wild</p>
+                <a href="/threat/end" style="text-decoration: none" ><button class="card_btn">View More</button></a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+            <div class="card-image">
+                <img src="../static/images/pictures/v.jpg" alt="">
+            </div>
+            <div class="card-content">
+                <span class="card_title">Vulnerable</span>
+                <span class="card_name">VU</span>
+                <p class="card_text">Considered to be facing a potential risk of extinction in the wild</p>
+                <a href="/threat/vul" style="text-decoration: none" ><button class="card_btn">View More</button></a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+            <div class="card-image">
+                <img src="../static/images/pictures/nt.jpg" alt="">
+            </div>
+            <div class="card-content">
+                <span class="card_title">Near Threatened</span>
+                <span class="card_name">NT</span>
+                <p class="card_text">Close to qualifying for or is likely to qualify for a threatened category in the
+                    near future</p>
+                <a href="/threat/nt" style="text-decoration: none" ><button class="card_btn">View More</button></a>
+            </div>
+        </div>
+
+        <div class="card swiper-slide">
+            <div class="card-image">
+                <img src="../static/images/pictures/lc.jpeg" alt="">
+            </div>
+            <div class="card-content">
+                <span class="card_title">Least Concern</span>
+                <span class="card_name">LC</span>
+                <p class="card_text">Widespread and abundant taxa are included in this category</p>
+                <a href="/threat/lc" style="text-decoration: none" ><button class="card_btn">View More</button></a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}
+{% block script %}
+
+<script src="http://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.mySwiper', {
+
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
+        spaceBetween: 15,
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        lazyLoading: true,
+    keyboard: {
+      enabled: true
+    },
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 300,
+            modifier: 1,
+            slideShadows: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+</script>
+{% endblock %}

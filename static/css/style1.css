@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+p{
+    font-size: 1.2rem;
+}
+header{
+    width:100%;
+    height:5rem;
+    background-color:aliceblue;
+    z-index:333;
+    top:0;
+    position:fixed;
+}
+.container{
+    width:60%;
+    max-width:117rem;
+    margin: 0 auto;
+    font-size: 10px;
+}
+.navbar{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    padding: 0 1.5rem;
+    align-items:center;
+}
+.log{
+    width:200px;
+    cursor:pointer;
+}
+.navbar ul{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.navbar ul a{
+    font-size:1.2rem;
+    padding:1.5rem;
+    text-transform:uppercase;
+    color:#5b5963;
+    font-weight:400;
+    letter-spacing:2px;
+    transition: all 0.4s ease;
+}
+.navbar ul a:hover{
+    color:white;
+    background-color:green;
+}
+.hero{
+    max-width:114rem;
+    height:40rem;
+    background:url(../images/pictures/birder.jpg)
+    no-repeat center center / cover ;
+    margin: 5rem auto;
+  
+}
+.hero1{
+    max-width:114rem;
+    height:40rem;
+    background:url(../images/pictures/bg1.jpg)
+    no-repeat center center / cover ;
+    margin: 5rem auto;
+  
+}
+.hero2{
+    max-width:114rem;
+    height:40rem;
+    background:url(../images/pictures/40.jpg)
+    no-repeat center center / cover ;
+    margin: 5rem auto;
+  
+}
+main{
+    width:100%;
+    max-width:90rem;
+    background-color:white;
+    margin: 0 auto;
+    padding: 3rem;
+    border-radius:1.5rem;
+    margin-top:-15rem;
+    box-shadow: #222;
+}
+main h2{
+    font-size:4rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:5px;
+
+}
+main .profile-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:3rem 0;
+}
+main .profile-container .profile{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+main .profile-container .profile .text{
+    margin: 0 1rem;
+    color:#5b5963;
+    font-size:1.0rem;
+    font-weight:400;
+    letter-spacing:1px;
+}
+.profile .text h3{
+    text-transform: uppercase;
+}
+
+main .content p{
+    color:#5b5963;
+    margin:1rem 0;
+    font-size:1.4rem;
+}
+main .content h4{
+    font-size:1.7rem;
+    font-weight:600;
+    color:#5b5963;
+    margin:2rem 0;
+}
+main .content .pic{
+    width:50%;
+    height:35rem;
+    text-align:center;
+}
+.tags{
+    display:flex;
+    align-items:center;
+}
+.tags p{
+    font-size:1.4rem;
+    text-transform: capitalize;
+}
+.tags a{
+    display:inline-block;
+    padding:0.3rem 1.5rem;
+    background-color:#f5f5f5;
+    color:#5b5963;
+    font-size:1.2rem;
+    text-transform:capitalize;
+    margin:5rem 0;
+}
+footer{
+    background-color:#222;
+    padding:3rem 0;
+}
+.icons{
+    text-align:center;
+}
+.icons .fa{
+    font-size:3rem;
+    color:grey;
+    padding:1rem;
+    transition:all 0.4s ease;
+}
+
+.icons .fa:hover{
+    color:white;
+    cursor:pointer;
+}
+.icons .copyright p{
+    font-size:1.2rem;
+    letter-spacing:1px;
+    color:white;
+    margin:2rem 0;
+}
+.icons p{
+    font-size:2rem;
+    letter-spacing:1px;
+    color:white;
+    margin:2rem 0;
+}
+.fa-heart-o{
+    color:#f44336;
+}
+main .content .pic1{
+    width:80%;
+    height:40rem;
+    text-align:center;
+}
+main .content .pic2{
+    width:800px;
+    height:1300px;
+    text-align:center;
+}
+main .content .pic21{
+    width:800px;
+    height:1100px;
+    text-align:center;
+}
