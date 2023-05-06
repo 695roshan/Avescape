@@ -90,5 +90,5 @@ def result_audio():
     return render_template("result_audio.html",act_name=act_name,acc=acc)
 
 if __name__=="__main__":
-    app.run(debug=True,use_reloader=True)
+    app.run(debug=False,host='0.0.0.0')
 
