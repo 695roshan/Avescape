@@ -1,5 +1,4 @@
 from flask import Flask,render_template,request
-from io import BytesIO
 from utility import predict_bird,predict_bird_audio
 import pandas as pd
 import csv

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from data import class_names,sc_names,class_names_audio
 
-model=load_model("Bird_images_Xception_FINETUNED-(224X224)-91.52.h5")
+model=load_model("Model_acc.h5")
 model_audio=load_model("Model_acc (3).h5")
 IMG_SIZE = 224
 
