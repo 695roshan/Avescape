@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from data import class_names,sc_names,class_names_audio
 
-model=load_model("Model_acc.h5")
-model_audio=load_model("Model_acc (3).h5")
+model=load_model("image_model.h5")
+model_audio=load_model("audio_model.h5")
 IMG_SIZE = 224
 
 def load_and_prep_image(filename, img_shape=IMG_SIZE):
