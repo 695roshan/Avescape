@@ -1,11 +1,12 @@
+import csv
+import requests
+import pandas as pd
 from flask import Flask,render_template,request
 from utility import predict_bird,predict_bird_audio
-import pandas as pd
-import csv
-
 
 app=Flask(__name__)
 
+API_KEY='94a27f12b46d11ab5fd7a4cfbf9650ea'
 @app.route("/")
 def home():    
     return render_template("index.html")
@@ -69,11 +70,22 @@ def blog_pages(blog_id):
 
 @app.route("/result-image",methods=["POST"])
 def result_image():
-    img_name="./static/images/pictures/abc.jpg"
-    request.files.get("bird").save(img_name)
-    act_name,sci_name,acc=predict_bird(img_name)
-    img_src="./static/images/pictures/abc.jpg"
-    return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_src)
+    # img_name="./static/images/pictures/abc.jpg"
+    # request.files.get("bird").save(img_name)
+    # act_name,sci_name,acc=predict_bird(img_name)
+    url='https://api.imgbb.com/1/upload'
+    image_file = request.files.get("bird")
+    data = {"key": API_KEY,}
+    files = {"image": image_file,}
+    # Send the POST request to upload the image to ImgBB
+    response = requests.post(url, data=data, files=files)
+    # Extract the URL of the uploaded image from the response
+    if response.status_code == 200:
+        response_json = response.json()
+        img_url = response_json["data"]["url"]
+    
+    act_name,sci_name,acc=predict_bird(img_url)
+    return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_url)
 
 @app.route("/result-audio",methods=["POST"])
 def result_audio():

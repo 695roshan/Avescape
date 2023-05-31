@@ -1,10 +1,11 @@
-from keras.models import load_model
-import tensorflow as tf
 import librosa
+import requests
 import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 import numpy as np
+matplotlib.use('Agg')
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from keras.models import load_model
 from data import class_names,sc_names,class_names_audio
 
 model=load_model("image_model.h5")
@@ -13,22 +14,20 @@ IMG_SIZE = 224
 
 def load_and_prep_image(filename, img_shape=IMG_SIZE):
     # preprocess the image
-    img = tf.io.read_file(filename)  # read image
-    img = tf.image.decode_image(img)  # decode the image to a tensor
+    # img = tf.io.read_file(filename)  # read image from file
+    # img = tf.io.decode_image(img)  # decode the image to a tensor
+    img = requests.get(filename).content #read image from url
+    img = tf.io.decode_image(img,channels=3)  # decode the image to a tensor
     img = tf.image.resize(img, size=[img_shape, img_shape])  # resize the image
     img = img/255.  # rescale the image
     return img
 
 def make_prediction(model, filename, class_names):
     # Imports an image located at filename, makes a prediction on it with a trained model
-
-    # Import the target image and preprocess it
     img = load_and_prep_image(filename)
-
     # Make a prediction
-    # (1,450) array representing probabily of each class
-    prediction = model.predict(tf.expand_dims(img, axis=0))
-
+    # (1,515) array representing probabily of each class
+    prediction = model.predict(tf.expand_dims(img, axis=0),verbose=0)
     # Get the predicted class index
     predicted_index = prediction.argmax() # taking the class index with the highest probability
     predicted_acc=round(prediction.max()*100,2)#the higest probability value
@@ -69,8 +68,6 @@ def predict_bird(img):
         predicted_class,predicted_acc=make_prediction(model,img,class_names)
         sci_name=sc_names[predicted_class]
         return predicted_class,sci_name,predicted_acc
-    
-    return None
 
 def predict_bird_audio(audio):
     if audio is not None:
@@ -78,6 +75,5 @@ def predict_bird_audio(audio):
         predicted_class = class_names_audio[predicted_index]
         return predicted_class,predicted_acc
     
-    return None
 if __name__=="__main__":
     print("Home")
