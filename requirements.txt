@@ -5,9 +5,5 @@ matplotlib
 pandas
 tensorflow
 keras
-<<<<<<< HEAD
 requests
 gunicorn
-=======
-gunicorn
->>>>>>> 0c42471808db03b76864c6079c0b386b80b41277

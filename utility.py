@@ -74,6 +74,3 @@ def predict_bird_audio(audio):
         predicted_index,predicted_acc=make_prediction_from_audio(model_audio, audio)
         predicted_class = class_names_audio[predicted_index]
         return predicted_class,predicted_acc
-    
-if __name__=="__main__":
-    print("Home")
