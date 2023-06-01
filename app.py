@@ -13,8 +13,8 @@ app=Flask(__name__)
 
 API_KEY='94a27f12b46d11ab5fd7a4cfbf9650ea'
 
-model=tf.keras.models.load_model("image_model.h5")
-model_audio=tf.keras.models.load_model("audio_model.h5")
+model=tf.keras.models.load_model("./models/image_model.h5")
+model_audio=tf.keras.models.load_model("./models/audio_model.h5")
 IMG_SIZE = 224
 
 def load_and_prep_image(filename, img_shape=IMG_SIZE):
