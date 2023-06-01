@@ -6,7 +6,6 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
-from keras import load_model
 from flask import Flask,render_template,request
 from data import class_names,sc_names,class_names_audio
 
@@ -14,8 +13,8 @@ app=Flask(__name__)
 
 API_KEY='94a27f12b46d11ab5fd7a4cfbf9650ea'
 
-model=load_model("image_model.h5")
-model_audio=load_model("audio_model.h5")
+model=tf.keras.models.load_model("image_model.h5")
+model_audio=tf.keras.models.load_model("audio_model.h5")
 IMG_SIZE = 224
 
 def load_and_prep_image(filename, img_shape=IMG_SIZE):
