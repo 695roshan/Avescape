@@ -1,14 +1,12 @@
 import csv
 import librosa
 import requests
-import requests
-import matplotlib
+import matplotlib as plt
 import numpy as np
 import pandas as pd
-matplotlib.use('Agg')
 import tensorflow as tf
 import matplotlib.pyplot as plt
-from keras.models import load_model
+from keras import load_model
 from flask import Flask,render_template,request
 from data import class_names,sc_names,class_names_audio
 
@@ -38,7 +36,7 @@ def make_prediction(model, filename, class_names):
     prediction = model.predict(tf.expand_dims(img, axis=0),verbose=0)
     # Get the predicted class index
     predicted_index = prediction.argmax() # taking the class index with the highest probability
-    predicted_acc=round(prediction.max()*100,2)#the higest probability value
+    predicted_acc=round(prediction.max()*100,2)#the highest probability value
     # Get the predicted class
     predicted_class = class_names[predicted_index]
     return predicted_class,predicted_acc
@@ -144,31 +142,33 @@ def blogs():
 def blog_pages(blog_id):    
     return render_template(f"blog {blog_id}.html")
 
-@app.route("/result-image",methods=["POST"])
+@app.route("/result-image",methods=["GET","POST"])
 def result_image():
     # img_name="./static/images/pictures/abc.jpg"
     # request.files.get("bird").save(img_name)
-    # act_name,sci_name,acc=predict_bird(img_name)
-    url='https://api.imgbb.com/1/upload'
-    image_file = request.files.get("bird")
-    data = {"key": API_KEY,}
-    files = {"image": image_file,}
-    # Send the POST request to upload the image to ImgBB
-    response = requests.post(url, data=data, files=files)
-    # Extract the URL of the uploaded image from the response
-    if response.status_code == 200:
-        response_json = response.json()
-        img_url = response_json["data"]["url"]
-    
-    act_name,sci_name,acc=predict_bird(img_url)
-    return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_url)
+    if request.method=='POST':
+        url='https://api.imgbb.com/1/upload'
+        image_file = request.files.get("bird")
+        data = {"key": API_KEY,}
+        files = {"image": image_file,}
+        # Send the POST request to upload the image to ImgBB
+        response = requests.post(url, data=data, files=files)
+        # Extract the URL of the uploaded image from the response
+        if response.status_code == 200:
+            response_json = response.json()
+            img_url = response_json["data"]["url"]
+            act_name,sci_name,acc=predict_bird(img_url)
+            return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_url)
+    return None
 
-@app.route("/result-audio",methods=["POST"])
+@app.route("/result-audio",methods=["GET","POST"])
 def result_audio():
-    aud_name="abc.mp3"
-    request.files.get("file").save(aud_name)
-    act_name,acc=predict_bird_audio(aud_name)
-    return render_template("result_audio.html",act_name=act_name,acc=acc)
-
+    if request.method=="POST":
+        aud_name="abc.mp3"
+        request.files.get("file").save(aud_name)
+        act_name,acc=predict_bird_audio(aud_name)
+        return render_template("result_audio.html",act_name=act_name,acc=acc)
+    return None
+    
 if __name__=="__main__":
     app.run(debug=False)
