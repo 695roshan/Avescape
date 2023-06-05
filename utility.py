@@ -1,27 +1,26 @@
 import librosa
-import requests
 import numpy as np
 from PIL import Image
-# import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 from data import class_names,sc_names,class_names_audio
 
 model=load_model("./models/image_model.h5")
 model_audio=load_model("./models/audio_model.h5")
-IMG_SIZE = 224
+IMG_DIM = (224,224)
+SPEC_IMG_DIM=(150,154)
 
+#Image
 def load_and_prep_image(file, img_shape):
     # preprocess the image
-    file = requests.get(file, stream=True).raw #read image from url
-    img=np.asarray(Image.open(file).resize((img_shape,img_shape)))
+    img=np.asarray(Image.open(file).resize(img_shape))
     img = img/255.  # rescale the image
     img=np.expand_dims(img, axis=0)
     return img
 
 def make_prediction(model, filepath, class_names):
     # Imports an image located at filename, makes a prediction on it with a trained model
-    img = load_and_prep_image(filepath,IMG_SIZE)
+    img = load_and_prep_image(filepath,IMG_DIM)
     # Make a prediction
     # (1,515) array representing probabily of each class
     prediction = model.predict(img,verbose=0)
@@ -31,13 +30,19 @@ def make_prediction(model, filepath, class_names):
     # Get the predicted class
     predicted_class = class_names[predicted_index]
     return predicted_class,predicted_acc
+
+def predict_bird_image(img):
+    if img is not None:
+        predicted_class,predicted_acc=make_prediction(model,img,class_names)
+        sci_name=sc_names[predicted_class]
+        return predicted_class,sci_name,predicted_acc
+
 #Audio
-def load_and_prep_image_audio(filename):
-    # preprocess the image
-    img = tf.io.read_file(filename) # read image
-    img = tf.image.decode_image(img) # decode the image to a tensor
-    img = tf.image.resize(img, size=[150, 154]) # resize the image
-    img = img/255 # rescale the image
+def load_and_prep_image_audio(filename,img_shape):
+    # preprocess the image    
+    img=np.asarray(Image.open(filename).resize(img_shape))
+    img = img/255.  # rescale the image
+    img=np.expand_dims(img, axis=0)
     return img
 
 def load_and_prep_audio(filepath):        
@@ -53,21 +58,14 @@ def make_prediction_from_audio(model_audio, filename):
     # Imports an image located at filename, makes a prediction on it with a trained model
     # Import the target image and preprocess it
     spectrogram=load_and_prep_audio(filename)
-    img = load_and_prep_image_audio(spectrogram)
+    img = load_and_prep_image_audio(spectrogram,SPEC_IMG_DIM)
     # Make a prediction
-    prediction = model_audio.predict(tf.expand_dims(img, axis=0),verbose=0)
-    predicted_index = prediction.argmax() # if more than one output, take the max
+    prediction = model_audio.predict(img,verbose=0)
+    predicted_index = prediction.argmax()
     prediction_acc=round(prediction.max()*100,2)
-    return predicted_index,prediction_acc
-
-def predict_bird_image(img):
-    if img is not None:
-        predicted_class,predicted_acc=make_prediction(model,img,class_names)
-        sci_name=sc_names[predicted_class]
-        return predicted_class,sci_name,predicted_acc
+    predicted_class = class_names_audio[predicted_index]
+    return predicted_class,prediction_acc
 
 def predict_bird_audio(audio):
     if audio is not None:
-        predicted_index,predicted_acc=make_prediction_from_audio(model_audio, audio)
-        predicted_class = class_names_audio[predicted_index]
-        return predicted_class,predicted_acc
+        return make_prediction_from_audio(model_audio, audio)

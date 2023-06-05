@@ -3,9 +3,8 @@ import csv
 import requests
 import pandas as pd
 from werkzeug.utils import secure_filename
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,jsonify
 from utility import predict_bird_image,predict_bird_audio
-
 
 UPLOAD_FOLDER = './static/images/uploads/'
 API_KEY='94a27f12b46d11ab5fd7a4cfbf9650ea'
@@ -79,34 +78,33 @@ def blog_pages(blog_id):
 def result_image():
     if request.method=='POST':
         #Saving the image of the bird and then predicting
-        # if 'bird' not in request.files:
-        #     return render_template("classify.html")
+        if 'bird' not in request.files:
+            # return jsonify(error="Please try again the image doesn't exist")
+            return render_template("classify.html")
         
-        # file = request.files['bird']
-        # if file.filename == '':
-        #     return render_template("classify.html")
+        image_file = request.files.get('bird')
         
-        # if file:
-        #     filename = secure_filename(file.filename)  #Use this werkzeug method to secure filename. 
-        #     file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-            
-        #     img_path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
-        #     # request.files.get("bird").save(img_path)
-        #     act_name,sci_name,acc=predict_bird_image(img_path)
-        #     return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_path)
+        if image_file.filename == '':
+            return render_template("classify.html")
+        
+        # filename = secure_filename(image_file.filename)  #Use this werkzeug method to secure filename. 
+        # img_path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
+        # image_file.save(img_path)
+        # act_name,sci_name,acc=predict_bird_image(img_path)
+        # # return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_path)
+        # return jsonify(actual_name=act_name,scientific_name=sci_name,accuracy=acc)
 
         # Uploading the image in the cloud and getting the url
+        
         url='https://api.imgbb.com/1/upload'
-        image_file = request.files.get("bird")
-        data = {"key": API_KEY,}
-        files = {"image": image_file,}
         # Send the POST request to upload the image to ImgBB
-        response = requests.post(url, data=data, files=files)
+        response = requests.post(url, data={"key": API_KEY,}, files={"image": image_file,})
         # Extract the URL of the uploaded image from the response
         if response.status_code == 200:
             response_json = response.json()
             img_url = response_json["data"]["url"]
-            act_name,sci_name,acc=predict_bird_image(img_url)
+            img_file = requests.get(img_url, stream=True).raw #read image from url
+            act_name,sci_name,acc=predict_bird_image(img_file)
             return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_url)
     return None
 
@@ -120,4 +118,4 @@ def result_audio():
     return None
     
 if __name__=="__main__":
-    app.run(debug=False)
+    app.run(debug=False, host='0.0.0.0')
