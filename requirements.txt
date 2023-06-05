@@ -6,6 +6,6 @@ requests
 gunicorn
 pandas
 matplotlib
-Pillow==8.3.2
-scikit-learn==0.23.0
-tensorflow-cpu==2.4.1
+Pillow
+scikit-learn
+tensorflow-cpu
