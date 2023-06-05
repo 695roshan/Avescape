@@ -1,9 +1,9 @@
-Flask
 numpy
-librosa
-matplotlib
+Flask
 pandas
-tensorflow
-keras
+Pillow
+librosa
 requests
 gunicorn
+matplotlib
+tensorflow-cpu
