@@ -13,7 +13,7 @@ IMG_SIZE = 224
 
 def load_and_prep_image(file, img_shape):
     # preprocess the image
-    file = requests.get(file, stream=True).raw #read image from url
+    # file = requests.get(file, stream=True).raw #read image from url
     img=np.asarray(Image.open(file).resize((img_shape,img_shape)))
     img = img/255.  # rescale the image
     img=np.expand_dims(img, axis=0)

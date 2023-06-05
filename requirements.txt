@@ -1,9 +1,11 @@
-numpy
 Flask
-pandas
-Pillow
+Werkzeug
+numpy
 librosa
 requests
 gunicorn
+pandas
 matplotlib
-tensorflow-cpu
+Pillow==8.3.2
+scikit-learn==0.23.0
+tensorflow-cpu==2.4.1
