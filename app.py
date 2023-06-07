@@ -87,26 +87,25 @@ def result_image():
         if image_file.filename == '':
             return render_template("classify.html")
         
-        # filename = secure_filename(image_file.filename)  #Use this werkzeug method to secure filename. 
-        # img_path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
-        # image_file.save(img_path)
-        # act_name,sci_name,acc=predict_bird_image(img_path)
-        # # return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_path)
+        filename = secure_filename(image_file.filename)  #Use this werkzeug method to secure filename. 
+        img_path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
+        image_file.save(img_path)
+        act_name,sci_name,acc=predict_bird_image(img_path)
+        return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_path)
         # return jsonify(actual_name=act_name,scientific_name=sci_name,accuracy=acc)
 
         # Uploading the image in the cloud and getting the url
         
-        url='https://api.imgbb.com/1/upload'
-        # Send the POST request to upload the image to ImgBB
-        response = requests.post(url, data={"key": API_KEY,}, files={"image": image_file,})
-        # Extract the URL of the uploaded image from the response
-        if response.status_code == 200:
-            response_json = response.json()
-            img_url = response_json["data"]["url"]
-            img_file = requests.get(img_url, stream=True).raw #read image from url
-            act_name,sci_name,acc=predict_bird_image(img_file)
-            return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_url)
-    return None
+        # url='https://api.imgbb.com/1/upload'
+        # # Send the POST request to upload the image to ImgBB
+        # response = requests.post(url, data={"key": API_KEY,}, files={"image": image_file,})
+        # # Extract the URL of the uploaded image from the response
+        # if response.status_code == 200:
+        #     response_json = response.json()
+        #     img_url = response_json["data"]["url"]
+        #     img_file = requests.get(img_url, stream=True).raw #read image from url
+        #     act_name,sci_name,acc=predict_bird_image(img_file)
+        #     return render_template("result.html",act_name=act_name,sci_name=sci_name,acc=acc,img_src=img_url)
 
 @app.route("/result-audio",methods=["GET","POST"])
 def result_audio():
@@ -118,4 +117,4 @@ def result_audio():
     return None
     
 if __name__=="__main__":
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0',port='8080')
