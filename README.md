@@ -1,2 +1,4 @@
 # Avescape
- Bird Identification from Images and Audio
+Bird Identification from Images and Audio
+
+Birdwatching today is more than just a recreational activity. Since time immemorial, it has been a common hobby such that the newfound empathy for such creatures has helped drum out dispassionate killing. However, identifying their species often requires meticulous searching through encyclopaedias, research papers and books. In this project, we have developed a Deep Learning model to help birders recognize 515 bird species from images of birds to provide birdwatchers with a convenient tool for identifying the birds in their natural habitat. We have also tried to extend the idea by developing a Machine Learning Model to recognize around 120 avian species from birdcalls.
